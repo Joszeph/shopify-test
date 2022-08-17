@@ -1,2 +1,14 @@
-<h1>Coding with Joseph</h1>
-<img src="{{'pic.jpg' | asset_url}}" alt="pic" width="300" height="400">
+<h1>{{shop.name}}</h1>
+
+{% comment %} <img src="{{'pic.jpg' | asset_url}}" alt="pic" width="300" height="400"> {% endcomment %}
+<h2>{{collections['frontpage'].title}}</h2>
+{% for product in collections['frontpage'].products %}
+    <a href={{product.url}}>
+        <div>
+            {{product| image_url: width:250 | image_tag}}
+            <h3>{{product.title}}</h3>
+            <p>{{product.price | money }}</p>
+            </div>
+    </a>
+    {% comment %} {{- product.title | link_to: product.url }} {% endcomment %}
+  {% endfor %}
