@@ -3,12 +3,6 @@
 {% comment %} <img src="{{'pic.jpg' | asset_url}}" alt="pic" width="300" height="400"> {% endcomment %}
 <h2>{{collections['frontpage'].title}}</h2>
 {% for product in collections['frontpage'].products %}
-    <a href={{product.url}}>
-        <div>
-            {{product| image_url: width:250 | image_tag}}
-            <h3>{{product.title}}</h3>
-            <p>{{product.price | money }}</p>
-            </div>
-    </a>
+    {% render 'product-item', product:product %}
     {% comment %} {{- product.title | link_to: product.url }} {% endcomment %}
   {% endfor %}
